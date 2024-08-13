@@ -2,7 +2,6 @@ import { List, ListItem, Checkbox, ListItemButton, ListItemAvatar, Avatar, ListI
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Sensor } from '../../models/Sensor.model';
 import { Sensors } from "@mui/icons-material";
-import { headers } from '../../constantes/constantes';
 
 
 interface SelectSensorListProps {

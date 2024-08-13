@@ -18,9 +18,6 @@ export const AgregarDispositivo = ({ onSubmit }: AgregarProps) => {
     const [selectedSensores, setSelectedSensores] = useState<Sensor[]>([]);
     const [sensores, setSensores] = useState<Sensor[]>([]);
 
-    let idState: undefined | boolean = undefined;
-    let modState: undefined | boolean = undefined;
-
     const handleIdChange = (event: any) => {
         let { nativeEvent: { target: { value } } } = event;
 
@@ -41,9 +38,6 @@ export const AgregarDispositivo = ({ onSubmit }: AgregarProps) => {
         setDispositivo(newsensor);
     };
 
-    idState = dispositivo.idDispositivo.length > 10;
-    modState = dispositivo.modelo.length > 0;
-
     const handleAgregarClick = () => {
         const device = {...dispositivo};
         device.sensores = [...selectedSensores];
@@ -59,8 +53,6 @@ export const AgregarDispositivo = ({ onSubmit }: AgregarProps) => {
 
                 // Resetenado el componente
                 setDispositivo({ idDispositivo: '', modelo: dispositivo.modelo, sensores: [] });
-                idState = undefined;
-                modState = undefined;
 
                 onSubmit();
             })

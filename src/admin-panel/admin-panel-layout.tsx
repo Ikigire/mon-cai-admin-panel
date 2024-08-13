@@ -1,19 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
 import { useAppContext } from "../app.context";
-import { Alert, Box, Button, Container, Dialog, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, styled } from "@mui/material";
+import { Alert, Box, Button, Container, Dialog } from "@mui/material";
 import { TopBar } from "./components/top-bar.component";
 import { MenuLateral } from "./components/menu-lateral.component";
-import { useState } from "react";
-import { Inbox, Mail } from "@mui/icons-material";
 
 export const AdminPanel = () => {
     const { usuario } = useAppContext();
-    const { openMenu, setOpenMenu } = useAppContext();
-    // const [open, setOpen] = useState(false);
-
-    const toggleDrawer = (newOpen: boolean) => () => {
-        setOpenMenu && setOpenMenu(newOpen);
-    };
+    
+    
 
     if (!usuario?.isAdmin) {
         return (
@@ -31,7 +25,7 @@ export const AdminPanel = () => {
     return (
         <Container>
             <Box>
-                <TopBar handleMenu={toggleDrawer} />
+                <TopBar />
                 {/* <MenuLateral open={open} onCLose={toggleDrawer} /> */}
                 <MenuLateral />
                 <Box component={'main'} sx={{marginTop: 8}}>
