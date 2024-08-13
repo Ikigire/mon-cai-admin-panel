@@ -1,26 +1,27 @@
-import { useState } from "react";
-import { AccountCircle, MenuRounded } from "@mui/icons-material";
-import { AppBar, Toolbar, IconButton, Typography, Menu, MenuItem } from "@mui/material";
+import { Logout, MenuRounded } from "@mui/icons-material";
+import { AppBar, Toolbar, IconButton, Typography, Tooltip } from "@mui/material";
 import { useAppContext } from "../../app.context";
+import { useNavigate } from "react-router-dom";
 
 
-class TopBarProps {
-    handleMenu: Function = () => {};
-}
+// class TopBarProps {
+//     handleMenu: Function = () => {};
+// }
 
 
-export const TopBar = (pr: TopBarProps) => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const {setOpenMenu} = useAppContext();
+export const TopBar = () => {
+    const { setSession, setOpenMenu } = useAppContext();
+    const navigate = useNavigate();
+
+    const logoutClick = () => {
+        setSession!({ idUsuario: -1, nombre: '', email: '' });
+        navigate('/')
+    }
 
     const openMenu = () => {
         setOpenMenu && setOpenMenu(true);
     }
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    
     return (
         <AppBar color="primary">
             <Toolbar color="primary">
@@ -32,34 +33,19 @@ export const TopBar = (pr: TopBarProps) => {
                     Bienvenido al Admin Panel
                 </Typography>
                 <div>
-                    <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={() =>{}}
-                        color="inherit"
-                    >
-                        <AccountCircle />
-                    </IconButton>
-                    <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>My account</MenuItem>
-                    </Menu>
+                    <Tooltip title="Cerrar sesión">
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={logoutClick}
+                            color="inherit"
+                        >
+                            <Logout />
+                        </IconButton>
+
+                    </Tooltip>
                 </div>
             </Toolbar>
         </AppBar>
