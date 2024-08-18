@@ -105,7 +105,7 @@ export const DispositivoList = ({ dispositivos, onListChange }: DispositivoListP
 
     return (
         <Box component={'section'}>
-            <Typography variant="h4">Sensores</Typography>
+            {/* <Typography variant="h4">Sensores</Typography> */}
             <Grid container spacing={1} justifyContent={'center'} alignItems={'center'} direction={'row'}>
                 {
                     dispositivos.map(dispositivo => {

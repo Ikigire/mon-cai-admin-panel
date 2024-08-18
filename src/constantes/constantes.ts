@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-export const base_url = "http://3.19.28.164:3003/"
+export const base_url = "https://mon-cai-api.up.railway.app/"
 
 export const headers = {
     "Content-Type": "application/json"
@@ -9,7 +9,7 @@ export const headers = {
 
 const alerta = withReactContent(Swal);
 
-export const alertar= (title: string, text: string, icon: 'warning'| 'error' | 'success', timer = 2000, didClose = () => {}) => {
+export const alertar= (title: string, text: string, icon: 'warning'| 'error' | 'success' | 'info', timer = 2000, didClose = () => {}) => {
     alerta.fire({
         timer,
         toast: true,
